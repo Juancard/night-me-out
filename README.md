@@ -1,22 +1,18 @@
-# Voting App!
+# Night me out!
 
 ## Overview
 
-Here are the specific user stories implemented:
-- As an authenticated user, I can keep my polls and come back later to access them.
-- As an authenticated user, I can share my polls with my friends.
-- As an authenticated user, I can see the aggregate results of my polls.
-- As an authenticated user, I can delete polls that I decide I don't want anymore.
-- As an authenticated user, I can create a poll with any number of possible items.
-- As an unauthenticated or authenticated user, I can see and vote on everyone's polls.
-- As an unauthenticated or authenticated user, I can see the results of polls in chart form. (This could be implemented using Chart.js or Google Charts.)
-- As an authenticated user, if I don't like the options on a poll, I can create a new option.
+Here are the specific user stories you should implement for this project:
+User Story: As an unauthenticated user, I can view all bars in my area.
+User Story: As an authenticated user, I can add myself to a bar to indicate I am going there tonight.
+User Story: As an authenticated user, I can remove myself from a bar if I no longer want to go there.
+User Story: As an unauthenticated user, when I login I should not have to search again.
 
 # Quick Start Guide
 
 ### Prerequisites
 
-In order to use Voting-app, you must have the following installed:
+In order to use this app, you must have the following installed:
 
 - [Node.js](https://nodejs.org/)
 - [NPM](https://nodejs.org/)
@@ -28,7 +24,7 @@ In order to use Voting-app, you must have the following installed:
 To install this app, simply enter the below in the terminal window:
 
 ```bash
-$ git clone https://github.com/Juancard/voting-app your-project
+$ git clone https://github.com/Juancard/night-me-out your-project
 ```
 
 To install the dependencies, enter the following in your terminal:
@@ -38,7 +34,7 @@ $ cd your-project
 $ npm install
 ```
 
-This will install the Voting-app components into the `your-project` directory.
+This will install the night-me-out components into the `your-project` directory.
 
 ### Setup Twitter Authentication
 
@@ -51,7 +47,7 @@ Create a file named `.env` in the root directory. This file should contain:
 ```
 TWITTER_KEY=your-client-id-here
 TWITTER_SECRET=your-client-secret-here
-MONGO_URI=mongodb://localhost:27017/voting-app
+MONGO_URI=mongodb://localhost:27017/night-me-out
 PORT=8080
 APP_URL=http://localhost:8080/
 ```
@@ -67,16 +63,6 @@ Node.js listening on port 8080...
 ```
 
 Next, open your browser and enter `http://localhost:8080/`. Congrats, you're up and running!
-
-## Features
-
-| Features           | Voting-app|
-|:---------          |:--------: |
-| MongoDB            | _Yes_     |
-| Express            | _Yes_     |
-| Node.js            | _Yes_     |
-| Passport           | _Yes_     |
-| Mongoose           | _Yes_     |
 
 ## License
 
