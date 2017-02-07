@@ -1,0 +1,31 @@
+block html
+  doctype html
+  html(lang='en')
+    head
+      block meta
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='description', content='Arrange your night out')
+        meta(name='author', content='Juan Cardona')
+      block title
+        title Night-me-out!
+      block css
+        link(href='/public/css/main.css', rel='stylesheet', type='text/css')
+        block bootstrap
+          // BOOTSTRAP
+          link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", type="text/css", rel="stylesheet")
+          link(rel='stylesheet', href="/bootstrap/css/bootstrap.min.css")
+          link(rel='stylesheet', href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
+          // load fontawesome
+          // END BOOTSTRAP
+  block body
+    .container-fluid
+      block content
+      block js
+        // jQuery (necessary for Bootstrap's JavaScript plugins)
+        script(src='/bootstrap/js/jquery/jquery.min.js')
+        script(src='/bootstrap/js/bootstrap.min.js')
+        script(type='text/javascript', src='/common/ajax-functions.js')
+      block footer
+        include footer.pug
