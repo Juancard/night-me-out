@@ -1,10 +1,11 @@
 hgroup#searchStatus.mb20.col-md-offset-1.col-md-10
   h1 Search Results
   h2.lead
-    strong.text-danger #{yelpJson.total}
+    strong.text-danger #{yelpJson.businesses.length || 0}
     |  results were found for the search for
     strong.text-danger  #{query.text}
-section#barsFound.col-xs-12.col-sm-6.col-md-offset-1.col-md-10
-  each bar in yelpJson.businesses
-    include barInfo.pug
-    hr
+if (!yelpJson.error)
+  section#barsFound.col-xs-12.col-sm-6.col-md-offset-1.col-md-10
+    each bar in yelpJson.businesses
+      include barInfo.pug
+      hr

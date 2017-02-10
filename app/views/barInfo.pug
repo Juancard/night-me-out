@@ -2,7 +2,7 @@ article.search-result.row
   .col-xs-12.col-sm-12.col-md-3
     a.thumbnail(href=bar.url, title=bar.name)
       img(src=bar.rating_img_url, alt=bar.name + ' reputation')
-      img(src=bar.image_url, alt=bar.name)
+      img(src=bar.image_url || "http://www.winesofchile.org/sites/default/files/no_image_available_10.png", alt=bar.name)
   .col-xs-12.col-sm-12.col-md-3
     ul.meta-search
       li
@@ -17,10 +17,11 @@ article.search-result.row
         else
           -address = bar.location.display_address[0];
         span #{city} - #{address}
-      each category in bar.categories
-        li
-          i.glyphicon.glyphicon-tags
-          span #{category[0]}
+      if bar.categories
+        each category in bar.categories
+          li
+            i.glyphicon.glyphicon-tags
+            span #{category[0]}
   .col-xs-12.col-sm-12.col-md-6
     h3
       a(href=bar.url, title=bar.name) #{bar.name}
