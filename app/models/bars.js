@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 
 var Bar = new Schema({
 	yelpId: String,
-	name: String,
 	usersGoing: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 

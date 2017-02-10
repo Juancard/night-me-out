@@ -68,7 +68,6 @@ function yelpHandler() {
   },
 
   this.getUsersGoing = (yelpJson) => {
-    console.log("in get users going", yelpJson.length);
     let barsIds = []
     for (let bar in yelpJson.businesses){
       barsIds.push(yelpJson.businesses[bar].id);

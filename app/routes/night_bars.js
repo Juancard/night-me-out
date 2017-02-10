@@ -46,4 +46,9 @@ module.exports = function (app, appEnv) {
         res.json(out);
       });
     });
+
+    app.route('/api/bar/:barYelpId')
+      .get(appEnv.middleware.isLoggedIn, (req, res) => {
+        console.log(req.params.barYelpId);
+      });
 }
