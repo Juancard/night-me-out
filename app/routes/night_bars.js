@@ -21,6 +21,7 @@ module.exports = function (app, appEnv) {
           query: {
             text: req.query.q
           },
+          usersGoing: yelpHandler.getUsersGoing(yelpJson),
           yelpJson,
         }
         res.render(appEnv.path + '/app/views/results.pug', out);
@@ -34,7 +35,15 @@ module.exports = function (app, appEnv) {
       }
       console.log(parameters);
       yelpHandler.request(parameters, function(err, response, body){
-        res.json(JSON.parse(body));
+        let yelpJson = JSON.parse(body);
+        let out = {
+          query: {
+            text: req.query.q
+          },
+          usersGoing: yelpHandler.getUsersGoing(yelpJson),
+          yelpJson,
+        }
+        res.json(out);
       });
     });
 }
