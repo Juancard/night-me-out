@@ -13,10 +13,20 @@
   font-weight: 500;
   src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
+html {
+  height: 100%;
+  position: relative;
+}
 
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
+  min-height: 100%;
+  position: relative;
+}
+
+.myContent {
+   padding-bottom:80px;   /* Height of the footer */
 }
 
 header {
@@ -57,11 +67,24 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 /**************************
   FOOTER
 ****************************/
-
+/*
 footer {
-	--background: #EDEFF1;
-	border-bottom: 1px solid #CCCCCC;
-	border-top: 1px solid #DDDDDD;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+*/
+footer {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   height:80px;   /* Height of the footer */
+   background-color: #efefef;
 }
 footer p {
   font-family: 'Roboto', sans-serif;

@@ -20,7 +20,7 @@
   });
   */
   let btnSearchForBars = document.getElementById('searchBars');
-  let barsFound = document.getElementById('barsFound');
+  let searchResults = document.getElementById('searchResults');
   let inputToSearch = document.getElementById('toSearch');
 
   var searchForBars = (event) => {
@@ -29,7 +29,7 @@
     let url = "/search?q="+query;
     console.log(url);
     ajaxFunctions.ajaxRequest('GET', url, null, (data) => {
-      barsFound.innerHTML = data;
+      searchResults.innerHTML = data;
     })
   }
   btnSearchForBars.addEventListener('click', searchForBars);

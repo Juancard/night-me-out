@@ -1,26 +1,34 @@
 article.search-result.row
   .col-xs-12.col-sm-12.col-md-3
-    a.thumbnail(href='#', title='Lorem ipsum')
-      img(src='http://lorempixel.com/250/140/food', alt='Lorem ipsum')
-  .col-xs-12.col-sm-12.col-md-2
+    a.thumbnail(href=bar.url, title=bar.name)
+      img(src=bar.rating_img_url, alt=bar.name + ' reputation')
+      img(src=bar.image_url, alt=bar.name)
+  .col-xs-12.col-sm-12.col-md-3
     ul.meta-search
       li
-        i.glyphicon.glyphicon-calendar
-        span 02/13/2014
-      li
-        i.glyphicon.glyphicon-time
-        span 8:32 pm
-      li
-        i.glyphicon.glyphicon-tags
-        span Food
-  .col-xs-12.col-sm-12.col-md-7
+        i.glyphicon.glyphicon-globe
+        - let city, address;
+        if (bar.location.neighborhoods && bar.location.neighborhoods[0])
+          -city = bar.location.neighborhoods[0];
+        else
+          -city = bar.location.display_address[1];
+        if (bar.location.address && bar.location.address[0])
+          -address = bar.location.address[0];
+        else
+          -address = bar.location.display_address[0];
+        span #{city} - #{address}
+      each category in bar.categories
+        li
+          i.glyphicon.glyphicon-tags
+          span #{category[0]}
+  .col-xs-12.col-sm-12.col-md-6
     h3
-      a(href='#', title='') Voluptatem, exercitationem, suscipit, distinctio
-    p
-      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.
-    span.row
-      .col-md-offset-8.col-md-4
-        button.btn.btn-primary.btn-sm.btn-block
-          span.badge 0
-          |  Going!
+      a(href=bar.url, title=bar.name) #{bar.name}
+    if (bar.snippet_text)
+      p #{bar.snippet_text}
+    else
+      p No description.
+    button.btn.btn-primary.btn-sm
+      span.badge 0
+      |  Going!
   span.clearfix.borda

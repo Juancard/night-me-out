@@ -20,12 +20,14 @@ block html
           // load fontawesome
           // END BOOTSTRAP
   block body
-    .container-fluid
-      block content
+    body
+      .myContent.container-fluid
+          block content
+      block footer
+        br
+        include footer.pug
       block js
         // jQuery (necessary for Bootstrap's JavaScript plugins)
         script(src='/bootstrap/js/jquery/jquery.min.js')
         script(src='/bootstrap/js/bootstrap.min.js')
         script(type='text/javascript', src='/common/ajax-functions.js')
-      block footer
-        include footer.pug

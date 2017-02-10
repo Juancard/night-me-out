@@ -16,8 +16,14 @@ module.exports = function (app, appEnv) {
         sort: '2'
       }
       yelpHandler.request(parameters, function(err, response, body){
-        let barsJson = JSON.parse(body);
-        res.render(appEnv.path + '/app/views/bars.pug', barsJson);
+        let yelpJson = JSON.parse(body);
+        let out = {
+          query: {
+            text: req.query.q
+          },
+          yelpJson,
+        }
+        res.render(appEnv.path + '/app/views/results.pug', out);
       });
     });
   app.route('/api/search')
