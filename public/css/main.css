@@ -13,6 +13,10 @@
   font-weight: 500;
   src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
+
+/*********************************************/
+
+
 html {
   height: 100%;
   position: relative;
