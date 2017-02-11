@@ -51,7 +51,10 @@ module.exports = function (app, appEnv) {
           if (err) {
             out.usersGoing = [];
           } else {
-            out.usersGoing = result;
+            out.usersGoing = result.reduce( (pre, post) => {
+                pre[post.yelpId] = post.usersGoing;
+                return pre;
+              }, {});
           }
           res.render(appEnv.path + '/app/views/results.pug', out);
         });
@@ -76,7 +79,10 @@ module.exports = function (app, appEnv) {
           if (err) {
             out.usersGoing = [];
           } else {
-            out.usersGoing = result;
+            out.usersGoing = result.reduce( (pre, post) => {
+                pre[post.yelpId] = post.usersGoing;
+                return pre;
+              }, {});
           }
           res.json(out);
         });
@@ -94,9 +100,11 @@ module.exports = function (app, appEnv) {
         if (req.barJson.error) {
           out.error = true;
           out.message = "Error: " + out.error.text;
+          res.json(out);
         }
         barHandler.userGoing(out.yelpId, req.user.id, (err, result) => {
-          res.json(result);
+          out.bar = result;
+          res.json(out);
         });
       });
 

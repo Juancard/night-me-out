@@ -40,9 +40,16 @@
         window.location.href = data.redirect;
       } else if (data.error) {
         alert(data.message || "Error");
+      } else {
+        console.log(data);
+        uploadUserGoing(data.bar);
       }
-      console.log(data);
     })
+  }
+
+  function uploadUserGoing(bar){
+    let button = document.getElementById(bar.yelpId);
+    button.firstElementChild.innerHTML = bar.usersGoing.length;
   }
 })();
 

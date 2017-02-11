@@ -30,6 +30,6 @@ article.search-result.row
     else
       p No description.
     button.btn.btn-primary.btn-sm(id=bar.id)
-      span.badge 0
-      |  Going!
+      span.badge #{(usersGoing[bar.id] && usersGoing[bar.id].length) || 0}
+      |   Going!
   span.clearfix.borda
