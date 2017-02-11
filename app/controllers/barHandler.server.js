@@ -13,7 +13,7 @@ function barHandler () {
       });
   },
 
-  this.getUsersGoing = (yelpJson) => {
+  this.getUsersGoing = (yelpJson, callback) => {
     let barsIds = []
     for (let bar in yelpJson.businesses){
       barsIds.push(yelpJson.businesses[bar].id);
@@ -21,8 +21,8 @@ function barHandler () {
     Bar
       .find({yelpId: {$in: barsIds} })
       .exec( (err, result) => {
-        if (err) return [];
-        return result
+        if (err) return callback(error);
+        return callback(false, result);
       });
   },
 
@@ -40,7 +40,7 @@ function barHandler () {
       } else {
         bar.usersGoing.push(userId);
       }
-      
+
       bar.save( (err, result) => {
         if (err) return callback("Error: on saving bar. Please try again later");
         callback(false, result);

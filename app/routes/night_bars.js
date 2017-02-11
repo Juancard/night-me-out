@@ -45,10 +45,16 @@ module.exports = function (app, appEnv) {
           query: {
             text: req.query.q
           },
-          usersGoing: barHandler.getUsersGoing(yelpJson),
           yelpJson,
         }
-        res.render(appEnv.path + '/app/views/results.pug', out);
+        barHandler.getUsersGoing(yelpJson, (err, result) => {
+          if (err) {
+            out.usersGoing = [];
+          } else {
+            out.usersGoing = result;
+          }
+          res.render(appEnv.path + '/app/views/results.pug', out);
+        });
       });
     });
   app.route('/api/search')
@@ -64,10 +70,16 @@ module.exports = function (app, appEnv) {
           query: {
             text: req.query.q
           },
-          usersGoing: barHandler.getUsersGoing(yelpJson),
           yelpJson,
         }
-        res.json(out);
+        barHandler.getUsersGoing(yelpJson, (err, result) => {
+          if (err) {
+            out.usersGoing = [];
+          } else {
+            out.usersGoing = result;
+          }
+          res.json(out);
+        });
       });
     });
 
