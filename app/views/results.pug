@@ -6,7 +6,7 @@ hgroup#searchStatus.mb20.col-md-offset-1.col-md-10
     strong.text-danger #{query.text}
     | "
 if (!yelpJson.error)
-  section#barsFound.col-xs-12.col-sm-6.col-md-offset-1.col-md-10
+  section#barsFound.col-xs-12.col-sm-12.col-md-offset-1.col-md-10
     each bar in yelpJson.businesses
       include barInfo.pug
       hr

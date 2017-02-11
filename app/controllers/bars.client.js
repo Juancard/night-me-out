@@ -20,6 +20,7 @@
       event.preventDefault();
     let query = inputToSearch.value;
     let url = urlSearch + query;
+    searchResults.innerHTML = '';
     ajaxFunctions.ajaxRequest('GET', url, null, (data) => {
       searchResults.innerHTML = data;
     })

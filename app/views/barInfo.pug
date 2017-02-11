@@ -1,9 +1,9 @@
 article.search-result.row
-  .col-xs-12.col-sm-12.col-md-3
+  .col-xs-12.col-sm-6.col-md-3
     a.thumbnail(href=bar.url, title=bar.name)
       img(src=bar.rating_img_url, alt=bar.name + ' reputation')
       img(src=bar.image_url || "http://www.winesofchile.org/sites/default/files/no_image_available_10.png", alt=bar.name)
-  .col-xs-12.col-sm-12.col-md-3
+  .col-xs-12.col-sm-6.col-md-3
     ul.meta-search
       li
         i.glyphicon.glyphicon-globe
@@ -29,7 +29,8 @@ article.search-result.row
       p #{bar.snippet_text}
     else
       p No description.
-    button.btn.btn-primary.btn-sm(id=bar.id)
-      span.badge #{(usersGoing[bar.id] && usersGoing[bar.id].length) || 0}
-      |   Going!
+    .row.col-sm-offset-6.col-sm-6.col-md-4.col-md-offset-8
+      button.btn.btn-primary.btn-sm.btn-block(id=bar.id)
+        span.badge #{(usersGoing[bar.id] && usersGoing[bar.id].length) || 0}
+        |   Going!
   span.clearfix.borda
