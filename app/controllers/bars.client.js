@@ -28,6 +28,7 @@
   function onResultsClick(e){
     if (e.target && e.target.nodeName === "BUTTON") {
       userGoing(e.target.id);
+      e.target.disabled = true;
     }
     e.stopPropagation();
   }
@@ -50,6 +51,7 @@
   function uploadUserGoing(bar){
     let button = document.getElementById(bar.yelpId);
     button.firstElementChild.innerHTML = bar.usersGoing.length;
+    button.disabled = false;
   }
 })();
 
