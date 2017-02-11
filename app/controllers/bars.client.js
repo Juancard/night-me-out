@@ -9,10 +9,6 @@
   let urlUserGoing = appUrl + "/api/bar";
   let urlSearch = appUrl + "/search?q=";
 
-  let onUserGoing = (event) => {
-    console.log(event.target.id);
-  }
-
   var searchForBars = (event) => {
     event.preventDefault();
     let query = inputToSearch.value;
@@ -42,7 +38,6 @@
       } else if (data.error) {
         alert(data.message || "Error");
       } else {
-        console.log(data);
         uploadUserGoing(data.bar);
       }
     })
@@ -54,5 +49,3 @@
     button.disabled = false;
   }
 })();
-
-//jade.compile($("#jadehi").html())(djson);

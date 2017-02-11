@@ -30,11 +30,8 @@ module.exports = function (passport) {
 				if (user) {
 					return done(null, user);
 				} else {
-					var newUser = new User();
-
-					newUser.twitter.id = profile.id;
-					newUser.twitter.username = profile.username;
-					newUser.twitter.displayName = profile.displayName;
+					var newUser = User.newInstance('twitter', profile.id,
+						profile.username, profile.displayName);
 
 					newUser.save(function (err) {
 						if (err) {

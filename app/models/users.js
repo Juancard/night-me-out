@@ -8,8 +8,25 @@ var User = new Schema({
 		id: String,
 		displayName: String,
 		username: String,
-      publicRepos: Number
+	},
+	lastQuery: {
+		text: String,
+		date: Date
 	}
 });
+
+User
+  .statics
+  .newInstance = function newInstance(strategy, id, displayName,
+		username, lastQuery={text: '', date: null}) {
+  let newUser = new this();
+
+  newUser[strategy].id = id;
+	newUser[strategy].displayName = displayName;
+	newUser[strategy].username = username;
+	newUser.lastQuery = lastQuery;
+
+  return newUser;
+}
 
 module.exports = mongoose.model('User', User);

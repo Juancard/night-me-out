@@ -6,6 +6,8 @@ module.exports = function (app, appEnv) {
   let yelpHandler = new YelpHandler();
   let BarHandler = require(appEnv.path + '/app/controllers/barHandler.server.js');
   let barHandler = new BarHandler();
+  let UserHandler = require(appEnv.path + '/app/controllers/userHandler.server.js');
+  let userHandler = new UserHandler();
 
   app.param("barYelpId",  (req, res, next, barYelpId) => {
 
@@ -17,16 +19,16 @@ module.exports = function (app, appEnv) {
       req.barJson = yelpJson;
       return next();
     });
-    /*
-    // ... VALIDATE POLL ID
-    barHandler.getBarByYelpId(pollId, function(err, poll){
-      if (err) return next(err);
-      if (!poll) return res.render(appEnv.path + '/app/views/404.pug');
-      // SAVE POLL
-      req.poll = poll
-      return next();
-    });
-    */
+  });
+
+  app.use(function(req, res, next){
+    if (req.user && req.query.q) {
+      userHandler.updateLastQuery(req.user, req.query.q, () => {
+        next();
+      })
+    } else {
+      next();
+    }
   });
 
   app.route('/')
