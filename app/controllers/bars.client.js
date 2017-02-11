@@ -9,8 +9,15 @@
   let urlUserGoing = appUrl + "/api/bar";
   let urlSearch = appUrl + "/search?q=";
 
+  ajaxFunctions.ready(() => {
+    let toSearch = inputToSearch.value;
+    if (toSearch)
+      searchForBars(null);
+  })
+
   var searchForBars = (event) => {
-    event.preventDefault();
+    if (event)
+      event.preventDefault();
     let query = inputToSearch.value;
     let url = urlSearch + query;
     ajaxFunctions.ajaxRequest('GET', url, null, (data) => {
