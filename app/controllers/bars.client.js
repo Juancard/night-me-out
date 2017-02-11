@@ -16,8 +16,8 @@
   var searchForBars = (event) => {
     event.preventDefault();
     let query = inputToSearch.value;
-    urlSearch += query;
-    ajaxFunctions.ajaxRequest('GET', urlSearch, null, (data) => {
+    let url = urlSearch + query;
+    ajaxFunctions.ajaxRequest('GET', url, null, (data) => {
       searchResults.innerHTML = data;
     })
   }
@@ -33,10 +33,14 @@
   }
 
   function userGoing(barYelpId){
-    urlUserGoing += '/' + barYelpId;
-    ajaxFunctions.ajaxRequest('GET', urlUserGoing, null, function(data){
+    let url = urlUserGoing + '/' + barYelpId;
+    ajaxFunctions.ajaxRequest('POST', url, null, function(data){
       data = JSON.parse(data);
-      if (data.redirect) window.location.href = data.redirect;
+      if (data.redirect) {
+        window.location.href = data.redirect;
+      } else if (data.error) {
+        alert(data.message || "Error");
+      }
       console.log(data);
     })
   }

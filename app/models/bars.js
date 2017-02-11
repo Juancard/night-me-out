@@ -8,4 +8,15 @@ var Bar = new Schema({
 	usersGoing: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 
+Bar
+  .statics
+  .newInstance = function newInstance(yelpId, usersGoing=[]) {
+  let newBar = new this();
+
+  newBar.yelpId = yelpId;
+	newBar.usersGoing = usersGoing;
+
+  return newBar;
+}
+
 module.exports = mongoose.model('Bar', Bar);
